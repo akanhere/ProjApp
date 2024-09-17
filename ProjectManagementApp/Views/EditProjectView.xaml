@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectManagementApp.Views.EditProjectView"
+             Title="EditProjectView">
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="10">
+            <Label Text="Edit Project" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry Text="{Binding Project.Name}" Placeholder="Project Name" />
+            <Entry Text="{Binding Project.Description}" Placeholder="Project Description" />
+
+            <Button Text="Save" Command="{Binding SaveCommand}" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

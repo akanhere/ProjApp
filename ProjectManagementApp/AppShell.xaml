@@ -3,13 +3,12 @@
     x:Class="ProjectManagementApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ProjectManagementApp.Views"
     xmlns:local="clr-namespace:ProjectManagementApp"
     Shell.FlyoutBehavior="Disabled"
-    Title="ProjectManagementApp">
+    BackgroundColor="#595959"
+    Title="Project Management App">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent ContentTemplate="{DataTemplate views:HomeView}" Route="Home"/>
 
 </Shell>

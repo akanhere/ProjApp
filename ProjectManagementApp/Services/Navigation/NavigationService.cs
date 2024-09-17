@@ -1,4 +1,5 @@
 ﻿
+using ProjectManagementApp.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,8 @@ namespace ProjectManagementApp.Services.Navigation
 {
     public class MauiNavigationService : INavigationService
     {
-
         public MauiNavigationService()
         {
-
         }
 
         public async Task InitializeAsync()
@@ -25,6 +24,7 @@ namespace ProjectManagementApp.Services.Navigation
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
         {
             var shellNavigation = new ShellNavigationState(route);
+
 
             return routeParameters != null
                 ? Shell.Current.GoToAsync(shellNavigation, routeParameters)

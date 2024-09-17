@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Define colors -->
+    <Color x:Key="PrimaryColor">#6200EE</Color>
+    <Color x:Key="SecondaryColor">#03DAC6</Color>
+    <Color x:Key="BackgroundColor">#FFFFFF</Color>
+    <Color x:Key="TextColorBlack">#000000</Color>
+    <Color x:Key="TextColorWhite">#FFFFFF</Color>
+    <Color x:Key="FrameBorderColor">LightSlateGray</Color>
+    <Color x:Key="ExpanderHeaderBackgroundColor1">#F2E205</Color>
+    <Color x:Key="ExpanderHeaderBackgroundColor2">Azure</Color>
+
+    <!-- Define styles -->
+    <Style TargetType="Frame" x:Key="ExpanderFrameStyle">
+        <Setter Property="BorderColor" Value="{StaticResource FrameBorderColor}" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <Style TargetType="Grid" x:Key="ExpanderHeaderGridStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource ExpanderHeaderBackgroundColor1}" />
+        <Setter Property="HeightRequest" Value="60"/>
+        <Setter Property="ColumnDefinitions">
+            <Setter.Value>
+                <ColumnDefinitionCollection>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </ColumnDefinitionCollection>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="ExpanderHeaderLabelStyle">
+        <Setter Property="TextColor" Value="{StaticResource TextColorBlack}"/>
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ExpanderContentLabelStyle">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontFamily" Value="MontserratMedium" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="ExpanderHeaderButtonStyle">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="MontserratRegular" />
+        <Setter Property="HeightRequest" Value="40"/>
+    </Style>
+
+</ResourceDictionary>

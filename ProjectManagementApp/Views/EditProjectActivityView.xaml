@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectManagementApp.Views.EditProjectActivityView">
+    <VerticalStackLayout>
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- create grid layout for project actity details editing-->
+            <Label Grid.Row="0" Grid.Column="0" Text="Activity Name" />
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Name}" Placeholder="Activity Name" />
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Activity Description" />
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Description}" Placeholder="Activity Description" />
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Start Date" />
+            <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding StartDate}" />
+
+            <Label Grid.Row="3" Grid.Column="0" Text="End Date" />
+            <DatePicker Grid.Row="3" Grid.Column="1" Date="{Binding EndDate}" />
+
+            <Label Grid.Row="4" Grid.Column="0" Text="Status" />
+            <Picker Grid.Row="4" Grid.Column="1" SelectedIndex="{Binding StatusIndex}">
+                <Picker.ItemsSource>
+                    <x:String>Not Started</x:String>
+                    <x:String>In Progress</x:String>
+                    <x:String>Completed</x:String>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label Grid.Row="5" Grid.Column="0" Text="Resources" />
+            <CollectionView Grid.Row="5" Grid.Column="1" ItemsSource ="{Binding Resources}" HeightRequest="50">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding IsAssigned}"/>
+                            <Label Text="{Binding Name}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+    </VerticalStackLayout>
+        
+</ContentView>
