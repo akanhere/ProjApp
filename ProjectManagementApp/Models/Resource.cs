@@ -27,5 +27,33 @@ namespace ProjectManagementApp.Models
         public string Skill { get; set; }
 
         public ICollection<Vacation> PlannedVacations { get; set; }
+
+        //resource timezone 
+        [Required]
+        public string TimeZone { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string Phone { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string State { get; set; }
+        [Required]
+        public string Zip { get; set; }
+        [Required]
+        public string Country { get; set; }
+        [Required]
+        public string Role { get; set; }
+
+        [Required]
+        public float DailyHours { get; set; }
+
+
     }
 }

@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectManagementApp.Views.AddProjectView"
-             Title="AddProjectView">
-    <ContentPage.Content>
-        <VerticalStackLayout Padding="10">
-            <Label Text="Add New Project" FontSize="24" HorizontalOptions="Center" />
+             xmlns:v="clr-namespace:ProjectManagementApp.Views"
+             xmlns:vm="clr-namespace:ProjectManagementApp.ViewModels"
+             >
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Padding="10" Grid.Row="0">
+                <Label Text="Add New Project" FontSize="18" HorizontalOptions="Center" />
 
-            <Entry Text="{Binding Project.Name}" Placeholder="Project Name" />
-            <Entry Text="{Binding Project.Description}" Placeholder="Project Description" />
+                <Entry Text="{Binding Project.Name}" Placeholder="Project Name" />
+                <Entry Text="{Binding Project.Description}" Placeholder="Project Description" />
 
-            <Label Text="Project Activities" FontSize="18" HorizontalOptions="Center" />
-            <CollectionView ItemsSource="{Binding ProjectActivities}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Orientation="Horizontal" Padding="5">
-                            <Entry Text="{Binding Title}" Placeholder="Activity Name" WidthRequest="200" />
-                            <Entry Text="{Binding Details}" Placeholder="Activity Description" WidthRequest="200" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <Button Text="Add Activity" Command="{Binding AddActivityCommand}" />
-            <Button Text="Save Project" Command="{Binding SaveCommand}" />
-        </VerticalStackLayout>
-    </ContentPage.Content>
-</ContentPage>
+                <Label Text="Project Activities" FontSize="14" HorizontalOptions="Center" />
+                <CollectionView ItemsSource="{Binding ProjectActivities}"
+                                VerticalScrollBarVisibility="Always" 
+                                MinimumHeightRequest="150"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:EditProjectActivityViewModel">
+                            <v:EditProjectActivityView/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+                
+            </VerticalStackLayout>
+            <HorizontalStackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand">
+                <Button Text="Add Activity" Command="{Binding AddActivityCommand}" />
+                <Button Text="Save Project" Command="{Binding SaveCommand}" />
+            </HorizontalStackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

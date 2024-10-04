@@ -4,27 +4,48 @@
              x:Class="ProjectManagementApp.Views.HomeView"
              xmlns:c="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:local="clr-namespace:ProjectManagementApp.Converters"
-             Title="Home"
-             >
+             xmlns:vm="clr-namespace:ProjectManagementApp.ViewModels"
+             xmlns:v="clr-namespace:ProjectManagementApp.Views"
+             Title="Home">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:ExpanderArrowConverter x:Key="ExpanderArrowConverter" />
+
         </ResourceDictionary>
+
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid BackgroundColor="#262626">
+        <Grid Margin="20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <ScrollView  Grid.Column="1" VerticalScrollBarVisibility="Default">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Grid.Column="0" Grid.Row="0" BackgroundColor="{StaticResource HomeViewBackgroundColor}" HorizontalOptions="FillAndExpand">
+                <Button Text="Dashboard" Command="{Binding AddProjectCommand}" Style="{StaticResource HomeViewButtonStyle}" Margin="2.5, 150,2.5,10"/>
+                <Button Text="Projects" Command="{Binding AddResourceCommand}" Style="{StaticResource HomeViewButtonStyle}" />
+                <Button Text="Resources" Command="{Binding AddResourceCommand}" Style="{StaticResource HomeViewButtonStyle}"/>
+                <Button Text="Allocations" Style="{StaticResource HomeViewButtonStyle}"/>
+
+            </VerticalStackLayout>
+            <ContentView Grid.Column="1" Grid.Row="0"  Content="{Binding CurrentViewModel}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ContentView.Resources>
+                    <DataTemplate x:Key="ProjectView" x:DataType="{x:Type vm:AddProjectViewModel}">
+                        <v:AddProjectView/>
+                    </DataTemplate>
+                </ContentView.Resources>
+            </ContentView>
+            <!--<ScrollView Grid.Column="1" VerticalScrollBarVisibility="Default" Grid.Row="0">
                 <VerticalStackLayout>
                     <Frame Style="{StaticResource ExpanderFrameStyle}">
-                        <c:Expander >
+                        <c:Expander>
                             <c:Expander.Header>
                                 <Grid Style="{StaticResource ExpanderHeaderGridStyle}">
                                     <Label Grid.Column="0" Text="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type c:Expander}}, Converter={StaticResource ExpanderArrowConverter}}" 
-Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="End"/>
+                                           Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="End"/>
                                     <Label Text="HBR Project" Grid.Column="1" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
                                     <Label Text="On Time" Grid.Column="2" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
                                     <Button Text="More Details" Grid.Column="3" Style="{StaticResource ExpanderHeaderButtonStyle}"/>
@@ -37,63 +58,11 @@ Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="End"/>
                             </VerticalStackLayout>
                         </c:Expander>
                     </Frame>
-                    <Frame Style="{StaticResource ExpanderFrameStyle}">
-                        <c:Expander>
-                            <c:Expander.Header>
-                                <Grid Style="{StaticResource ExpanderHeaderGridStyle}">
-                                    <Label Grid.Column="0" Text="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type c:Expander}}, Converter={StaticResource ExpanderArrowConverter}}" 
-Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="End"/>
-                                    <Label Text="QAC Project" Grid.Column="1" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
-                                    <Label Text="On Time" Grid.Column="2" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
-                                    <Button Text="More Details" Grid.Column="3" Style="{StaticResource ExpanderHeaderButtonStyle}"/>
-                                </Grid>
-                            </c:Expander.Header>
-                            <VerticalStackLayout>
-                                <Label Text="Activity 1" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                                <Label Text="Activity 2" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                                <Label Text="Activity 3" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                            </VerticalStackLayout>
-                        </c:Expander>
-                    </Frame>
-                    <Frame Style="{StaticResource ExpanderFrameStyle}">
-                        <c:Expander>
-                            <c:Expander.Header>
-                                <Grid Style="{StaticResource ExpanderHeaderGridStyle}">
-                                    <Label Grid.Column="0" Text="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type c:Expander}}, Converter={StaticResource ExpanderArrowConverter}}" 
-Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="End"/>
-                                    <Label Text="HBR Project" Grid.Column="1" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
-                                    <Label Text="On Time" Grid.Column="2" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
-                                    <Button Text="More Details" Grid.Column="3" Style="{StaticResource ExpanderHeaderButtonStyle}"/>
-                                </Grid>
-                            </c:Expander.Header>
-                            <VerticalStackLayout>
-                                <Label Text="Activity 1" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                                <Label Text="Activity 2" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                                <Label Text="Activity 3" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                            </VerticalStackLayout>
-                        </c:Expander>
-                    </Frame>
-                    <Frame Style="{StaticResource ExpanderFrameStyle}">
-                        <c:Expander>
-                            <c:Expander.Header>
-                                <Grid Style="{StaticResource ExpanderHeaderGridStyle}">
-                                    <Label Grid.Column="0" Text="{Binding Path=IsExpanded, Source={RelativeSource AncestorType={x:Type c:Expander}}, Converter={StaticResource ExpanderArrowConverter}}" 
-Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="End"/>
-                                    <Label Text="QAC Project" Grid.Column="1" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
-                                    <Label Text="On Time" Grid.Column="2" Style="{StaticResource ExpanderHeaderLabelStyle}" HorizontalOptions="Start"/>
-                                    <Button Text="More Details" Grid.Column="3" Style="{StaticResource ExpanderHeaderButtonStyle}"/>
-                                </Grid>
-                            </c:Expander.Header>
-                            <VerticalStackLayout>
-                                <Label Text="Activity 1" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                                <Label Text="Activity 2" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                                <Label Text="Activity 3" Style="{StaticResource ExpanderContentLabelStyle}"/>
-                            </VerticalStackLayout>
-                        </c:Expander>
-                    </Frame>
-
+                    -->
+            <!-- Repeat for other Frames -->
+            <!--
                 </VerticalStackLayout>
-            </ScrollView>
+            </ScrollView>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

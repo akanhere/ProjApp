@@ -31,6 +31,12 @@ namespace ProjectManagementApp
                     fonts.AddFont("Montserrat-Regular.ttf", "MontserratRegular");
                     fonts.AddFont("Montserrat-Light.ttf", "MontserratLight");
                     fonts.AddFont("Montserrat-Medium.ttf", "MontserratMedium");
+                    fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "faw");
+                    fonts.AddFont("Quicksand-Regular.ttf", "QuicksandRegular");
+                    fonts.AddFont("Quicksand-Bold.ttf", "QuicksandBold");
+                    fonts.AddFont("Quicksand-Medium.ttf", "QuicksandMedium");
+                    fonts.AddFont("Quicksand-Light.ttf", "QuicksandLight");
+                    fonts.AddFont("Quicksand-SemiBold.ttf", "QuicksandExtraLight");
 
                 });
             builder.Services.AddDbContext<AppDbContext>();
@@ -68,6 +74,8 @@ namespace ProjectManagementApp
             mauiAppBuilder.Services.AddSingleton<ProjectViewModel>();
             mauiAppBuilder.Services.AddSingleton<EditProjectViewModel>();
             mauiAppBuilder.Services.AddSingleton<AddProjectViewModel>();
+            mauiAppBuilder.Services.AddSingleton<AddResourceViewModel>();
+            //mauiAppBuilder.Services.AddSingleton<EditProjectActivityViewModel>();
             return mauiAppBuilder;
         }
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
@@ -75,6 +83,8 @@ namespace ProjectManagementApp
             mauiAppBuilder.Services.AddSingleton<HomeView>();
             mauiAppBuilder.Services.AddSingleton<EditProjectView>();
             mauiAppBuilder.Services.AddSingleton<AddProjectView>();
+            mauiAppBuilder.Services.AddSingleton<AddResourceView>();
+            //mauiAppBuilder.Services.AddTransient<EditProjectActivityView>();
             return mauiAppBuilder;
         }
 

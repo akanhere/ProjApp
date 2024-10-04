@@ -11,6 +11,8 @@ namespace ProjectManagementApp.ViewModels
     public class AddProjectViewModel : ViewModelBase
     {
         private Project _project;
+        private readonly IDataService _dataService;
+
         public Project Project
         {
             get => _project;
@@ -21,28 +23,31 @@ namespace ProjectManagementApp.ViewModels
             }
         }
 
-        public ObservableCollection<ProjectActivity> ProjectActivities { get; set; }
+        // public ObservableCollection<ProjectActivity> ProjectActivities { get; set; }
+        public ObservableCollection<EditProjectActivityViewModel> ProjectActivities { get; set; }
         public ICommand AddActivityCommand { get; }
         public ICommand SaveCommand { get; }
+
 
         public AddProjectViewModel(INavigationService navigationService, IDataService dataService) : base(navigationService, dataService)
         {
             Project = new Project();
-            ProjectActivities = new ObservableCollection<ProjectActivity>();
+            ProjectActivities = new ObservableCollection<EditProjectActivityViewModel>();
             AddActivityCommand = new Command(AddActivity);
             SaveCommand = new Command(async () => await SaveProject());
+            _dataService = dataService;
         }
 
         private void AddActivity()
         {
-            ProjectActivities.Add(new ProjectActivity());
+            ProjectActivities.Add(new EditProjectActivityViewModel(NavigationService, _dataService));
         }
 
         private async Task SaveProject()
         {
-            Project.ProjectActivities = ProjectActivities.Where(a=>a.Title != null).ToList();
-            await DataService.AddProjectAsync(Project);
-            await NavigationService.PopAsync();
+            //Project.ProjectActivities = new List<ProjectActivity>;
+            //await DataService.AddProjectAsync(Project);
+            //await NavigationService.PopAsync();
         }
     }
 }

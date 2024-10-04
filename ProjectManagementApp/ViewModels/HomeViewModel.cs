@@ -13,10 +13,24 @@ namespace ProjectManagementApp.ViewModels
 {
     public class HomeViewModel : ViewModelBase
     {
+        private ViewModelBase currentViewModel;
+
         public ObservableCollection<ProjectViewModel> Projects { get; set; }
         public ICommand DeleteSelectedCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand AddProjectCommand { get; }
+
+        public ICommand AddResourceCommand { get; }
+
+        public ViewModelBase CurrentViewModel
+        {
+            get => currentViewModel; 
+            set
+            {
+                currentViewModel = value;
+                OnPropertyChanged("CurrentViewModel");
+            }
+        }
 
 
         public HomeViewModel(INavigationService navigationService, IDataService dataService) : base(navigationService, dataService)
@@ -27,12 +41,18 @@ namespace ProjectManagementApp.ViewModels
             EditCommand = new Command(async () => await EditProject());
             AddProjectCommand = new Command(async () => await AddProject());
 
+            AddResourceCommand = new Command(async () => await NavigateToView());
 
 
             // Load projects from the database
-            LoadProjects();
+            //LoadProjects();
 
 
+        }
+
+        private async Task NavigateToView()
+        {
+            await NavigationService.NavigateToAsync("AddResourceView");
         }
 
         override public async Task InitializeAsync()
@@ -58,7 +78,8 @@ namespace ProjectManagementApp.ViewModels
         private async Task AddProject()
         {
             // Navigate to the add project page
-            await NavigationService.NavigateToAsync("AddProjectView");
+            //await NavigationService.NavigateToAsync("AddProjectView");
+            CurrentViewModel = new AddProjectViewModel(NavigationService, DataService);
         }
 
         private async Task EditProject(/*ProjectViewModel project*/)

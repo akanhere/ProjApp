@@ -19,6 +19,7 @@ namespace ProjectManagementApp
             Routing.RegisterRoute("Home", typeof(HomeView));
             Routing.RegisterRoute("EditProjectView", typeof(EditProjectView));
             Routing.RegisterRoute("AddProjectView", typeof(AddProjectView));
+            Routing.RegisterRoute("AddResourceView", typeof(AddResourceView));
         }
     }
 }

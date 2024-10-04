@@ -20,6 +20,9 @@ namespace ProjectManagementApp.Models
         [Required]
         public DateTime EndDate { get; set; }
 
+        [Required]
+        public string VacationType { get; set; }
+
         [ForeignKey("Resource")]
         public int ResourceId { get; set; }
 

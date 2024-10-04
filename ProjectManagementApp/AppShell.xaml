@@ -6,8 +6,17 @@
     xmlns:views="clr-namespace:ProjectManagementApp.Views"
     xmlns:local="clr-namespace:ProjectManagementApp"
     Shell.FlyoutBehavior="Disabled"
-    BackgroundColor="#595959"
-    Title="Project Management App">
+    >
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="CenterAndExpand" HeightRequest="60">
+            <Image Source="designer.png" HeightRequest="32" Aspect="AspectFit" Margin="10,2.5" VerticalOptions="CenterAndExpand"/>
+            <Label Text="ProjApp" FontFamily="MontserratMedium" 
+                   FontSize="24" 
+                   Margin= "2.5" VerticalOptions="Center" 
+                   TextColor="#D90B1C"
+                   VerticalTextAlignment="Center"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
 
     <ShellContent ContentTemplate="{DataTemplate views:HomeView}" Route="Home"/>
 

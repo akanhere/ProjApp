@@ -8,9 +8,11 @@
     <Color x:Key="BackgroundColor">#FFFFFF</Color>
     <Color x:Key="TextColorBlack">#000000</Color>
     <Color x:Key="TextColorWhite">#FFFFFF</Color>
-    <Color x:Key="FrameBorderColor">LightSlateGray</Color>
-    <Color x:Key="ExpanderHeaderBackgroundColor1">#F2E205</Color>
+    <Color x:Key="FrameBorderColor">White</Color>
+    <Color x:Key="ExpanderHeaderBackgroundColor1">#ECEDF1</Color>
     <Color x:Key="ExpanderHeaderBackgroundColor2">Azure</Color>
+    <Color x:Key="HomeViewBackgroundColor">#ECEDF1</Color>
+    <Color x:Key="ImportantTextColor">#F2421B</Color>
 
     <!-- Define styles -->
     <Style TargetType="Frame" x:Key="ExpanderFrameStyle">
@@ -38,22 +40,39 @@
     <Style TargetType="Label" x:Key="ExpanderHeaderLabelStyle">
         <Setter Property="TextColor" Value="{StaticResource TextColorBlack}"/>
         <Setter Property="Margin" Value="5" />
-        <Setter Property="FontFamily" Value="OpenSansSemibold" />
-        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontFamily" Value="QuicksandMedium" />
+        <Setter Property="FontSize" Value="12" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
     <Style TargetType="Label" x:Key="ExpanderContentLabelStyle">
         <Setter Property="Margin" Value="5" />
-        <Setter Property="FontFamily" Value="MontserratMedium" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="12" />
     </Style>
 
     <Style TargetType="Button" x:Key="ExpanderHeaderButtonStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource TextColorWhite}"/>
         <Setter Property="Margin" Value="5" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="FontFamily" Value="MontserratRegular" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="QuicksandRegular" />
         <Setter Property="HeightRequest" Value="40"/>
+    </Style>
+
+    <!-- New styles for HomeView -->
+    <Style TargetType="Button" x:Key="HomeViewButtonStyle">
+        <Setter Property="FontFamily" Value="QuicksandRegular" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="Margin" Value="5,10"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="ImportantLabelStyle">
+        <Setter Property="FontFamily" Value="faw" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{StaticResource ImportantTextColor}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
     </Style>
 
 </ResourceDictionary>
